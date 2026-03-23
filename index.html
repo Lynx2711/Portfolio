@@ -240,16 +240,70 @@ body{background:var(--bg);font-family:var(--mono);color:var(--tx);display:flex;f
 ::-webkit-scrollbar-thumb{background:#424242;border-radius:4px;}
 
 @media(max-width:768px){
-  .sidebar{display:none;}.act{display:none;}
+  /* Activity bar: keep visible, icon-only strip */
+  .act{width:40px;padding-top:.35rem;gap:.15rem;}
+  .aic{width:30px;height:30px;font-size:.9rem;}
+  .dl-resume{width:30px;height:30px;}
+  .dl-resume svg{width:15px;height:15px;}
+  .aic svg{width:16px;height:16px;}
+
+  /* Sidebar: hide by default */
+  .sidebar{display:none;}
+
+  /* Hamburger: show */
+  .hamburger{display:flex!important;}
+
+  /* Sidebar mobile overlay mode */
+  .sidebar.mob-open{display:flex;position:fixed;top:30px;left:40px;bottom:22px;z-index:50;width:240px;box-shadow:4px 0 20px rgba(0,0,0,.5);}
+  .mob-overlay{position:fixed;inset:0;z-index:40;background:rgba(0,0,0,.5);}
+
+  /* Content layout adjustments */
   .contact-grid{grid-template-columns:1fr;}
   .focus-grid{grid-template-columns:1fr;}
   .skill-grid{grid-template-columns:1fr;}
   .fun-grid{grid-template-columns:1fr;}
-  .pc{padding:1.5rem;}
+  .pc{padding:1.2rem;}
+  .pc-full{padding:1.2rem;}
   .stats-row{grid-template-columns:repeat(2,1fr);}
-  .hamburger{display:flex!important;}
-  .sidebar.mob-open{display:flex;position:fixed;top:30px;left:0;bottom:22px;z-index:50;width:260px;box-shadow:4px 0 20px rgba(0,0,0,.5);}
-  .mob-overlay{display:block!important;position:fixed;inset:0;z-index:40;background:rgba(0,0,0,.5);}
+
+  /* Tabs: smaller on mobile */
+  .tab{padding:0 .6rem;font-size:.68rem;min-height:30px;}
+  .tabbar{overflow-x:auto;}
+
+  /* Breadcrumb: hide on mobile */
+  .bc{display:none;}
+
+  /* Titlebar adjustments */
+  .titlebar{padding:0 .4rem;}
+  .t-title{display:none;}
+  .t-menu{gap:.6rem;font-size:.68rem;}
+
+  /* Project cards */
+  .proj-preview{aspect-ratio:16/10;}
+  [style*="padding:0 3rem"]{padding:0 1.2rem 1.2rem!important;}
+
+  /* Education cards */
+  .edu-card{grid-template-columns:1fr;gap:.3rem;padding:1rem 1.2rem;}
+  .edu-year{text-align:left;}
+
+  /* Terminal */
+  .panel{height:160px;}
+  .pout{font-size:.68rem;padding:.4rem .6rem;}
+  .tinput{padding:.2rem .6rem .3rem;}
+  #tf{font-size:.68rem;}
+
+  /* Status bar */
+  .statusbar{font-size:.58rem;padding:0 .5rem;}
+  .sbi{gap:.2rem;}
+
+  /* Hero adjustments */
+  .hero-name{font-size:clamp(1.8rem,8vw,2.5rem);}
+  .hero-bio{font-size:.68rem;}
+  .hero-btns{flex-direction:column;gap:.5rem;}
+  .hbtn{justify-content:center;}
+
+  /* File menu dropdown: show on mobile */
+  .file-menu-mobile{display:inline!important;}
 }
 
 /* ── HAMBURGER ── */
@@ -257,12 +311,15 @@ body{background:var(--bg);font-family:var(--mono);color:var(--tx);display:flex;f
 .hamburger:hover{color:var(--tx);}
 
 /* ── DROPDOWN MENU ── */
-.menu-drop{position:absolute;top:100%;left:0;min-width:200px;background:var(--sb);border:1px solid var(--bd);box-shadow:0 8px 24px rgba(0,0,0,.5);z-index:100;display:none;padding:.3rem 0;border-radius:4px;}
+.menu-drop{position:absolute;top:100%;left:0;min-width:200px;background:var(--sb);border:1px solid var(--bd);box-shadow:0 8px 24px rgba(0,0,0,.5);z-index:100;display:none;padding:.3rem 0;border-radius:4px;max-height:70vh;overflow-y:auto;}
 .menu-drop.show{display:block;}
 .menu-drop .md-item{padding:.35rem .9rem;font-family:var(--mono);font-size:.72rem;color:var(--tx);cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:background .1s;}
 .menu-drop .md-item:hover{background:var(--st);color:#fff;}
 .menu-drop .md-sep{height:1px;background:var(--bd);margin:.3rem 0;}
 .menu-drop .md-label{padding:.25rem .9rem;font-family:var(--mono);font-size:.6rem;color:var(--mu);letter-spacing:.08em;text-transform:uppercase;pointer-events:none;}
+
+/* File menu: hidden on desktop */
+.file-menu-mobile{display:none;}
 
 /* ── SEARCH PANEL ── */
 .search-panel{display:none;position:absolute;top:0;left:0;right:0;bottom:0;background:var(--sb);z-index:30;flex-direction:column;padding:0;}
@@ -280,6 +337,19 @@ body{background:var(--bg);font-family:var(--mono);color:var(--tx);display:flex;f
 /* ── DOWNLOAD RESUME BTN ── */
 .dl-resume{width:36px;height:36px;display:flex;align-items:center;justify-content:center;color:#777;border-radius:4px;cursor:pointer;transition:color .2s,opacity .2s;opacity:.6;}
 .dl-resume:hover{color:#fff;opacity:1;}
+@media(max-width:768px){
+  html,body,
+  .vsc,.editor,.ec,
+  .pane,.pane.on{
+    background:#1e1e1e !important;
+    color:#cccccc !important;
+  }
+  .pg-title,.hero-name,.edu-inst,.proj-name,.fun-card h3{color:#ffffff !important;}
+  .file-comment{color:#6a9955 !important;}
+  .sec-label{color:#ff6fd8 !important;}
+  .about-bio-box,.stat-box,.proj-card,.cert-item,.soc-item,.fun-card{background:#252526 !important;}
+  .focus-item,.edu-card{background:#1e1e1e !important;}
+}
 </style>
 </head>
 <body>
@@ -290,7 +360,20 @@ body{background:var(--bg);font-family:var(--mono);color:var(--tx);display:flex;f
     <div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div>
     <div class="hamburger" onclick="toggleMobileSidebar()">☰</div>
     <div class="t-menu">
-      <span>File</span><span>Edit</span>
+      <span style="position:relative" onclick="toggleDrop('fileDrop',event)">File
+        <div class="menu-drop" id="fileDrop">
+          <div class="md-label">Navigate To</div>
+          <div class="md-item" onclick="go('home')">⬡ home.tsx</div>
+          <div class="md-item" onclick="go('about')">⬡ about.html</div>
+          <div class="md-item" onclick="go('projects')">⬡ projects.js</div>
+          <div class="md-item" onclick="go('skills')">⬡ skills.json</div>
+          <div class="md-item" onclick="go('education')">⬡ education.ts</div>
+          <div class="md-item" onclick="go('contact')">⬡ contact.css</div>
+          <div class="md-item" onclick="go('fun')">⬡ README.md</div>
+          <div class="md-sep"></div>
+          <div class="md-item" onclick="window.open('aditinewcv.pdf','_blank')">📄 Open Resume</div>
+        </div>
+      </span><span>Edit</span>
       <span style="position:relative" onclick="toggleDrop('viewDrop',event)">View
         <div class="menu-drop" id="viewDrop">
           <div class="md-label">Open Page</div>
